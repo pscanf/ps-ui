@@ -61,6 +61,18 @@ psUiDemo.controller("MnCtrl", function ($scope) {
 			formattedAddress: "Via Caroi, 7, Campovico, SO, Italia"
 		}
 	];
+	$scope.phones = [
+		{
+			number: "0342 611182",
+			tags: ["Casa"]
+		}
+	];
+	$scope.faxes = [
+		{
+			number: "02 40042621",
+			tags: ["Fiam"]
+		}
+	];
 	$scope.gOpts = {
 		types: ["geocode"],
 		componentRestrictions: {

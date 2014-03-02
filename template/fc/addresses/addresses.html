@@ -1,3 +1,8 @@
+<label>
+	<i class="fa fa-map-marker"></i>
+	Indirizzi
+</label>
+<div class="ps-vsp-4"></div>
 <accordion class="ps-accordion">
 	<accordion-group ng-repeat="address in addresses" class="ps-accordion-heading">
 		<accordion-heading>
@@ -7,7 +12,10 @@
 			</span>
 		</accordion-heading>
 		<div class="ps-address">
-			<label><i class="fa fa-map-marker"></i> Indirizzo</label>
+			<label>
+				<i class="fa fa-map-marker"></i>
+				Indirizzo
+			</label>
 			<div class="ps-vsp-4"></div>
 			<div>
 				<input type="text" class="ps-address-street form-control" placeholder="Via o piazza" ng-model="address.street">

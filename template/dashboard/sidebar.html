@@ -3,7 +3,7 @@
 	<ul class="nav">
 		<li ng-repeat="item in menu.items" ng-click="toggleSubmenu(item)" class="ps-clickable">
 			<a ng-href="{{item.href}}">
-				<span class="ps-fwe-20" ng-if="item.icon">
+				<span class="ps-width-20" ng-if="item.icon">
 					<i class="fa {{item.icon}}"></i>
 				</span>
 				{{item.title}}
@@ -15,9 +15,9 @@
 			<ul ng-if="isSubmenu(item)" collapse="!item.open" class="nav nav-second-level">
 				<li ng-repeat="subitem in item.items">
 					<a ng-href="{{subitem.href}}">
-						<span class="ps-fwe-20">
+						<span class="ps-width-20">
 						</span>
-						<span class="ps-fwe-20" ng-if="subitem.icon">
+						<span class="ps-width-20" ng-if="subitem.icon">
 							<i class="fa {{subitem.icon}}"></i>
 						</span>
 						{{subitem.title}}

@@ -15,7 +15,6 @@
 		<script src="bower_components/angular/angular.js"></script>
 		<script src="//maps.googleapis.com/maps/api/js?libraries=places&sensor=false&language=it"></script>
 		<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-		<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 		<script src="bower_components/angular-ui-utils/ui-utils.js"></script>
 
 		<!-- own CSS -->
@@ -45,12 +44,27 @@
 		</ps-sidebar>
 		<ps-content>
 			<br />
-			<div class="col-sm-6">
+			<div class="col-sm-4 col-sm-offset-1">
+				<br />
+				<br />
+				<br />
 				<ps-fc-emails emails="emails"></ps-fc-emails>
 				<br />
+				<br />
+				<br />
 				<ps-fc-addresses addresses="addresses" options="gOpts"></ps-fc-addresses>
+			</div>
+			<div class="col-sm-4 col-sm-offset-1">
+				<br />
+				<br />
 				<br />
 				<ps-fc-phones phones="phones"></ps-fc-phones>
+				<br />
+				<br />
+				<br />
+				<ps-fc-faxes faxes="faxes"></ps-fc-faxes>
+				<br />
+				<br />
 				<br />
 				<ps-fc-codice-fiscale cf="cf"></ps-fc-codice-fiscale>
 			</div>

@@ -48,14 +48,8 @@ angular.module("ps-ui.fc.addresses", [])
 					}
 					ola += ",";
 				}
-				if (adr.postalCode !== "") {
-					ola += " " + adr.postalCode;
-				}
 				if (adr.city !== "") {
 					ola += " " + adr.city;
-				}
-				if (adr.county !== "") {
-					ola += " (" + adr.county + ")";
 				}
 				if (ola === "") {
 					ola = "Nuovo indirizzo";

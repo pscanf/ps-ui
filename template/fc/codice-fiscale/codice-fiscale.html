@@ -1,5 +1,9 @@
 <div class="form-group has-feedback" ng-class="{'has-error': invalidCf, 'has-success': validCf}">
-	<label class="control-label">Codice fiscale</label>
+	<label class="control-label">
+		<i class="fa fa-credit-card"></i>
+		Codice fiscale
+	</label>
+	<div class="ps-vsp-4"></div>
 	<input class="form-control ps-uppercase" ui-mask="AAA AAA 99A99 A99*A" ng-model="cf" />
 	<i ng-if="invalidCf" class="fa fa-times form-control-feedback"></i>
 	<i ng-if="validCf" class="fa fa-check form-control-feedback"></i>

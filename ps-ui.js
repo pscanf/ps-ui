@@ -43,6 +43,7 @@ angular.module("ps-ui.fc", [
 	"ps-ui.fc.codice-fiscale",
 	"ps-ui.fc.emails",
 	"ps-ui.fc.phones",
+	"ps-ui.fc.faxes",
 	"ps-ui.fc.tags"
 ]);
 
@@ -122,14 +123,8 @@ angular.module("ps-ui.fc.addresses", [])
 					}
 					ola += ",";
 				}
-				if (adr.postalCode !== "") {
-					ola += " " + adr.postalCode;
-				}
 				if (adr.city !== "") {
 					ola += " " + adr.city;
-				}
-				if (adr.county !== "") {
-					ola += " (" + adr.county + ")";
 				}
 				if (ola === "") {
 					ola = "Nuovo indirizzo";
@@ -290,6 +285,86 @@ angular.module("ps-ui.fc.emails", [])
 	};
 });
 
+angular.module("ps-ui.fc.faxes", [])
+
+.directive("psFcFaxes", function () {
+	return {
+		restrict: "E",
+		templateUrl: "template/fc/faxes/faxes.html",
+		scope: {
+			faxes: "="
+		},
+		link: function ($scope) {
+			$scope.text = {
+				delete: "Elimina",
+				question: "Confermi l'eliminazione?",
+				yes: "Sì",
+				no: "No"
+			};
+			$scope.addFax = function (e) {
+				if (e instanceof KeyboardEvent) {
+					if (e.keyCode !== 13) {
+						return;
+					}
+				}
+				if (!$scope.newFax || $scope.newFax === "") {
+					return;
+				}
+				if (!$scope.faxes) {
+					$scope.faxes = [];
+				}
+				$scope.faxes.push({
+					number: $scope.newFax
+				});
+				$scope.newFax = "";
+			};
+			$scope.delFax = function (index) {
+				$scope.faxes.splice(index, 1);
+			};
+		}
+	};
+});
+
+angular.module("ps-ui.fc.emails", [])
+
+.directive("psFcEmails", function () {
+	return {
+		restrict: "E",
+		templateUrl: "template/fc/emails/emails.html",
+		scope: {
+			emails: "="
+		},
+		link: function ($scope, $element) {
+			$scope.text = {
+				delete: "Elimina",
+				question: "Confermi l'eliminazione?",
+				yes: "Sì",
+				no: "No"
+			};
+			$scope.addEmail = function (e) {
+				if (e instanceof KeyboardEvent) {
+					if (e.keyCode !== 13) {
+						return;
+					}
+				}
+				if (!$scope.newEmail || $scope.newEmail === "") {
+					return;
+				}
+				if (!$scope.emails) {
+					$scope.emails = [];
+				}
+				$scope.emails.push({
+					address: $scope.newEmail
+				});
+				$scope.newEmail = "";
+			};
+			$scope.delEmail = function (index) {
+				$scope.emails.splice(index, 1);
+			};
+		}
+	};
+});
+
 angular.module("ps-ui.fc.phones", [])
 
 .directive("psFcPhones", function () {
@@ -338,6 +413,14 @@ angular.module("ps-ui.fc.tags", [])
 		templateUrl: "template/fc/tags/tags.html",
 		scope: {
 			tags: "="
+		},
+		link: function ($scope) {
+			$scope.noTags = function () {
+				if ($scope.tags) {
+					return $scope.tags.length === 0;
+				}
+				return true;
+			};
 		}
 	};
 });
@@ -456,6 +539,12 @@ angular.module("ps-ui.in.tag", [])
 					$scope.tags.push(tag);
 				}
 				$scope.newTag = "";
+			};
+			$scope.noTags = function () {
+				if ($scope.tags) {
+					return $scope.tags.length === 0;
+				}
+				return true;
 			};
 		}
 	};

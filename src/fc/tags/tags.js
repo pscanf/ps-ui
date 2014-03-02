@@ -6,6 +6,14 @@ angular.module("ps-ui.fc.tags", [])
 		templateUrl: "template/fc/tags/tags.html",
 		scope: {
 			tags: "="
+		},
+		link: function ($scope) {
+			$scope.noTags = function () {
+				if ($scope.tags) {
+					return $scope.tags.length === 0;
+				}
+				return true;
+			};
 		}
 	};
 });

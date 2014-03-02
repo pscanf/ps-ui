@@ -40,6 +40,12 @@ angular.module("ps-ui.in.tag", [])
 				}
 				$scope.newTag = "";
 			};
+			$scope.noTags = function () {
+				if ($scope.tags) {
+					return $scope.tags.length === 0;
+				}
+				return true;
+			};
 		}
 	};
 });

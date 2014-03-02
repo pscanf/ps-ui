@@ -98,3 +98,15 @@ span.ps-width-30 {
 span.ps-width-20 {
 	display: inline-block;
 }
+.ps-width-15 {
+	width: 15px;
+}
+span.ps-width-15 {
+	display: inline-block;
+}
+.ps-width-10 {
+	width: 10px;
+}
+span.ps-width-10 {
+	display: inline-block;
+}

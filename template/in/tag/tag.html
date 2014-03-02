@@ -1,11 +1,11 @@
-<div>
+<div ng-if="!noTags()">
 	<span class="label label-default ps-tag" ng-repeat="tag in tags">
 		{{tag}}
 		<i class="fa fa-times ps-clickable" ng-click="delTag($index)"></i>
 	</span>
+	<div class="ps-vsp-4"></div>
+	<div class="ps-vsp-4"></div>
 </div>
-<div class="ps-vsp-4"></div>
-<div class="ps-vsp-4"></div>
 <div class="input-group">
 	<input class="form-control" placeholder="{{placeholder}}" ng-model="newTag" ng-keyup="addTag($event)" />
 	<span class="input-group-btn">
