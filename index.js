@@ -49,10 +49,6 @@ psUiDemo.controller("MainCtrl", function ($scope) {
 	};
 	$scope.emails = [
 		{
-			address: "paolo.scanferla@gmail.com",
-			tags: ["Personal"]
-		},
-		{
 			address: "paolo.scanferla@pcm.it",
 			tags: ["Work"]
 		}
@@ -66,30 +62,13 @@ psUiDemo.controller("MainCtrl", function ($scope) {
 			county: "Milano",
 			country: "Italia",
 			tags: ["Office"]
-		},
-		{
-			street: "via Plinio",
-			number: "22",
-			city: "Milano",
-			postalCode: "20129",
-			county: "Milano",
-			country: "Italia",
-			tags: ["Home"]
 		}
 	];
 	$scope.phones = [
 		{
-			number: "+39 02 87188526",
-			tags: ["Landline"]
-		},
-		{
-			number: "+39 338 3113950",
-			tags: ["Mobile"]
-		},
-		{
 			number: "+39 02 43987133",
 			tags: ["Office"]
-		},
+		}
 	];
 	$scope.faxes = [
 		{
