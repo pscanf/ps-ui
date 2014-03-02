@@ -27,7 +27,7 @@ psUiDemo.controller("MainCtrl", function ($scope) {
 			},
 			{
 				title: "Time wasting sites",
-				icon: "fa-clock",
+				icon: "fa-clock-o",
 				type: "submenu",
 				items: [
 					{
