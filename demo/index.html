@@ -1,0 +1,59 @@
+<!doctype html>
+<html ng-app="ps-ui-demo">
+	<head>
+
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<title>ps-ui demo</title>
+
+		<!-- vendor CSS -->
+		<link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text-css" href="bower_components/font-awesome/css/font-awesome.min.css" />
+
+		<!-- vendor JS -->
+		<script src="bower_components/angular/angular.js"></script>
+		<script src="//maps.googleapis.com/maps/api/js?libraries=places&sensor=false&language=it"></script>
+		<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+		<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+		<script src="bower_components/angular-ui-utils/ui-utils.js"></script>
+
+		<!-- own CSS -->
+		<link rel="stylesheet" type="text/css" href="ps-ui.css" />
+
+		<!-- own JS -->
+		<script src="ps-ui.js"></script>
+		<script src="index.js"></script>
+
+	</head>
+	<body ng-controller="MnCtrl">
+		<ps-sidebar menu="menu">
+			<div name="before">
+				<p>Before</p>
+				<br />
+				<br />
+				<br />
+				<br />
+			</div>
+			<div name="after">
+				<br />
+				<br />
+				<br />
+				<br />
+				<p>After</p>
+			</div>
+		</ps-sidebar>
+		<ps-content>
+			<br />
+			<div class="col-sm-6">
+				<ps-fc-emails emails="emails"></ps-fc-emails>
+				<br />
+				<ps-fc-addresses addresses="addresses" options="gOpts"></ps-fc-addresses>
+				<br />
+				<ps-fc-phones phones="phones"></ps-fc-phones>
+				<br />
+				<ps-fc-codice-fiscale cf="cf"></ps-fc-codice-fiscale>
+			</div>
+		</ps-content>
+	</body>
+</html>

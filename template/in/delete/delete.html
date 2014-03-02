@@ -1,0 +1,17 @@
+<button class="btn btn-default btn-xs" type="button" ng-show="!toggle" ng-click="toggle = !toggle">
+	<span class="ps-width-20">
+		<i class="fa fa-trash-o"></i>
+	</span>
+	{{text.delete}}
+</button>
+<div ng-show="toggle">
+	{{text.question}}
+	&nbsp;
+	<button class="btn btn-default btn-xs ps-width-30" type="button" ng-click="deleteAction()">
+		{{text.yes}}
+	</button>
+	&nbsp;
+	<button class="btn btn-default btn-xs ps-width-30" type="button" ng-click="toggle = !toggle">
+		{{text.no}}
+	</button>
+</div>
