@@ -38,7 +38,7 @@ gulp.task("templates", function () {
 			prefix: "template/"
 		}))
 		.pipe(concat("ps-template-cache.min.js"))
-//		.pipe(uglify())
+		.pipe(uglify())
 		.pipe(gulp.dest("dist/"));
 });
 
