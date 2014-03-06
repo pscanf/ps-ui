@@ -9,7 +9,9 @@
     "gulp-concat": "^2.1.7",
     "gulp": "^3.5.5",
     "gulp-livereload": "^1.2.0",
-    "tiny-lr": "0.0.5"
+    "tiny-lr": "0.0.5",
+    "gulp-ng-html2js": "^0.1.6",
+    "gulp-uglify": "^0.2.1"
   },
   "license": "MIT"
 }
