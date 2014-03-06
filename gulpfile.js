@@ -38,12 +38,12 @@ gulp.task("templates", function () {
 			prefix: "template/"
 		}))
 		.pipe(concat("ps-template-cache.min.js"))
-		.pipe(uglify())
+//		.pipe(uglify())
 		.pipe(gulp.dest("dist/"));
 });
 
 gulp.task("final", function () {
-	gulp.src(["dist/ps-ui.min.js", "dist/ps-template-cache.min.js"])
+	gulp.src(["dist/ps-template-cache.min.js", "dist/ps-ui.min.js"])
 		.pipe(concat("ps-ui-tpls.min.js"))
 		.pipe(gulp.dest("dist/"))
 		.pipe(livereload(lrServer));
