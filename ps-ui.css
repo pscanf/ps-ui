@@ -20,6 +20,21 @@
 #ps-sidebar * {
 	color: #333333;
 }
+#ps-toggle-sidebar {
+	display: none;
+}
+@media (max-width: 767px) {
+	#ps-sidebar {
+		left: -250px;
+		transition: left 0.4s ease 0s;
+	}
+	#ps-sidebar.show-sidebar {
+		left: 0px;
+	}
+	#ps-toggle-sidebar {
+		display: initial;
+	}
+}
 /************************ Content *************************/
 #ps-content {
 	box-sizing: border-box;
@@ -30,6 +45,15 @@
 	width: 100%;
 	z-index: 0;
 	background-color: #ffffff;
+}
+@media (max-width: 767px) {
+	#ps-content {
+		padding-left: 0px;
+		transition: left 0.4s ease 0s;
+	}
+	#ps-content.show-sidebar {
+		left: 250px;
+	}
 }
 /********************* Address inputs *********************/
 .ps-address input {
@@ -67,7 +91,6 @@
 .ps-accordion-heading .panel-heading a {
 	cursor: pointer;
 }
-
 .ps-accordion-heading .panel-heading a:hover {
 	text-decoration: none;
 }

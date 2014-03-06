@@ -30,6 +30,27 @@ angular.module("ps-ui.dashboard", [])
 	};
 })
 
+.directive("psToggleSidebar", function () {
+	return {
+		restrict: "E",
+		templateUrl: "template/dashboard/toggle-sidebar.html",
+		scope: {},
+		link: function ($scope) {
+			$scope.toggle = function () {
+				var sidebar = angular.element(document.getElementById("ps-sidebar"));
+				var content = angular.element(document.getElementById("ps-content"));
+				if (sidebar.hasClass("show-sidebar")) {
+					sidebar.removeClass("show-sidebar");
+					content.removeClass("show-sidebar");
+				} else {
+					sidebar.addClass("show-sidebar");
+					content.addClass("show-sidebar");
+				}
+			};
+		}
+	};
+})
+
 .directive("psContent", function () {
 	return {
 		restrict: "E",
@@ -45,12 +66,6 @@ angular.module("ps-ui.fc", [
 	"ps-ui.fc.phones",
 	"ps-ui.fc.faxes",
 	"ps-ui.fc.tags"
-]);
-
-angular.module("ps-ui.in", [
-	"ps-ui.in.address",
-	"ps-ui.in.delete",
-	"ps-ui.in.tag"
 ]);
 
 angular.module("ps-ui.multi-transclude", [])
@@ -72,6 +87,12 @@ angular.module("ps-ui.multi-transclude", [])
 		}
 	};
 });
+
+angular.module("ps-ui.in", [
+	"ps-ui.in.address",
+	"ps-ui.in.delete",
+	"ps-ui.in.tag"
+]);
 
 angular.module("ps-ui.fc.addresses", [])
 
@@ -320,46 +341,6 @@ angular.module("ps-ui.fc.faxes", [])
 			};
 			$scope.delFax = function (index) {
 				$scope.faxes.splice(index, 1);
-			};
-		}
-	};
-});
-
-angular.module("ps-ui.fc.emails", [])
-
-.directive("psFcEmails", function () {
-	return {
-		restrict: "E",
-		templateUrl: "template/fc/emails/emails.html",
-		scope: {
-			emails: "="
-		},
-		link: function ($scope, $element) {
-			$scope.text = {
-				delete: "Elimina",
-				question: "Confermi l'eliminazione?",
-				yes: "Sì",
-				no: "No"
-			};
-			$scope.addEmail = function (e) {
-				if (e instanceof KeyboardEvent) {
-					if (e.keyCode !== 13) {
-						return;
-					}
-				}
-				if (!$scope.newEmail || $scope.newEmail === "") {
-					return;
-				}
-				if (!$scope.emails) {
-					$scope.emails = [];
-				}
-				$scope.emails.push({
-					address: $scope.newEmail
-				});
-				$scope.newEmail = "";
-			};
-			$scope.delEmail = function (index) {
-				$scope.emails.splice(index, 1);
 			};
 		}
 	};
