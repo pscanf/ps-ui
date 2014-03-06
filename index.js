@@ -1,4 +1,4 @@
-var psUiDemo = angular.module("ps-ui-demo", ["ps-ui"]);
+var psUiDemo = angular.module("ps-ui-demo", ["ps-ui", "ps-template-cache"]);
 
 psUiDemo.controller("MainCtrl", function ($scope) {
 	$scope.menu = {
