@@ -2,6 +2,7 @@ var gulp		= require("gulp");
 var concat		= require("gulp-concat");
 var ngHtml2Js	= require("gulp-ng-html2js");
 var uglify		= require("gulp-uglify");
+var minifyCss	= require("gulp-minify-css");
 var livereload	= require("gulp-livereload");
 var tinyLr		= require("tiny-lr");
 var static		= require("node-static");
@@ -14,6 +15,12 @@ var dvServer = http.createServer(function (req, res) {
 		stServer.serve(req, res);
 	});
 	req.resume();
+});
+
+gulp.task("styles", function () {
+	gulp.src("styles/ps-ui.css")
+		.pipe(minifyCss())
+		.pipe(gulp.dest("dist/"));
 });
 
 gulp.task("scripts", function () {
@@ -44,6 +51,7 @@ gulp.task("final", function () {
 gulp.task("default", function () {
 	dvServer.listen(8080);
 	lrServer.listen(35729);
+	gulp.watch("styles/ps-ui.css", ["styles"]);
 	gulp.watch("src/**/*.js", ["scripts"]);
 	gulp.watch("template/**/*.html", ["templates"]);
 	gulp.watch("dist/ps-ui.min.js", ["final"]);
