@@ -7,7 +7,9 @@
   "devDependencies": {
     "node-static": "^0.7.3",
     "gulp-concat": "^2.1.7",
-    "gulp": "^3.5.5"
+    "gulp": "^3.5.5",
+    "gulp-livereload": "^1.2.0",
+    "tiny-lr": "0.0.5"
   },
   "license": "MIT"
 }

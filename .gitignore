@@ -1,3 +1,7 @@
 *.swp
 node_modules
 bower_components
+demo/bower_components
+demo/templates
+demo/ps-ui.js
+demo/ps-ui.css
