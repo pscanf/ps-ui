@@ -19,6 +19,7 @@ var dvServer = http.createServer(function (req, res) {
 
 gulp.task("styles", function () {
 	gulp.src("styles/ps-ui.css")
+		.pipe(concat("ps-ui.min.css"))
 		.pipe(minifyCss())
 		.pipe(gulp.dest("dist/"));
 });
