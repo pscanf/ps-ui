@@ -15,7 +15,7 @@ angular.module("ps-ui.fc.phones", [])
 				no: "No"
 			};
 			$scope.addPhone = function (e) {
-				if (e instanceof KeyboardEvent) {
+				if (e && e.type === "keyup") {
 					if (e.keyCode !== 13) {
 						return;
 					}

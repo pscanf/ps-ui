@@ -4,7 +4,6 @@ var static	= require("node-static");
 var http	= require("http");
 var plugins	= require("gulp-load-plugins")();
 
-console.log(plugins);
 var lrServer = tinyLr();
 var dvServer = http.createServer(function (req, res) {
 	var stServer = new static.Server(".", {cache: false});

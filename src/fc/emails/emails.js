@@ -15,7 +15,7 @@ angular.module("ps-ui.fc.emails", [])
 				no: "No"
 			};
 			$scope.addEmail = function (e) {
-				if (e instanceof KeyboardEvent) {
+				if (e && e.type === "keyup") {
 					if (e.keyCode !== 13) {
 						return;
 					}

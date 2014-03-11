@@ -97,7 +97,7 @@ angular.module('ps-ui.fc.addresses', []).directive('psFcAddresses', function () 
       };
       $scope.input = '';
       $scope.addAddress = function (e) {
-        if (e instanceof KeyboardEvent) {
+        if (e && e.type === 'keyup') {
           if (e.keyCode !== 13)
             return;
           if (!$scope.place)
@@ -360,7 +360,7 @@ angular.module('ps-ui.fc.emails', []).directive('psFcEmails', function () {
         no: 'No'
       };
       $scope.addEmail = function (e) {
-        if (e instanceof KeyboardEvent) {
+        if (e && e.type === 'keyup') {
           if (e.keyCode !== 13) {
             return;
           }
@@ -393,7 +393,7 @@ angular.module('ps-ui.fc.faxes', []).directive('psFcFaxes', function () {
         no: 'No'
       };
       $scope.addFax = function (e) {
-        if (e instanceof KeyboardEvent) {
+        if (e && e.type === 'keyup') {
           if (e.keyCode !== 13) {
             return;
           }
@@ -426,7 +426,7 @@ angular.module('ps-ui.fc.phones', []).directive('psFcPhones', function () {
         no: 'No'
       };
       $scope.addPhone = function (e) {
-        if (e instanceof KeyboardEvent) {
+        if (e && e.type === 'keyup') {
           if (e.keyCode !== 13) {
             return;
           }
@@ -546,12 +546,12 @@ angular.module('ps-ui.in.tag', []).directive('psInTag', function () {
         186
       ];
       $scope.addTag = function (e) {
-        if (e instanceof KeyboardEvent) {
+        if (e && e.type === 'keyup') {
           if ($scope.addingKeyCodes.indexOf(e.keyCode) === -1) {
             return;
           }
         }
-        if (e instanceof MouseEvent) {
+        if (e && e.type === 'click') {
           if (e.button !== 0) {
             return;
           }

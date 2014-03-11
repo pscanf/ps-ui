@@ -14,12 +14,12 @@ angular.module("ps-ui.in.tag", [])
 			};
 			$scope.addingKeyCodes = [13, 32, 188, 186];
 			$scope.addTag = function (e) {
-				if (e instanceof KeyboardEvent) {
+				if (e && e.type === "keyup") {
 					if ($scope.addingKeyCodes.indexOf(e.keyCode) === -1) {
 						return;
 					}
 				}
-				if (e instanceof MouseEvent) {
+				if (e && e.type === "click") {
 					if (e.button !== 0) {
 						return;
 					}

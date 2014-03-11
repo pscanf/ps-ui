@@ -17,7 +17,7 @@ angular.module("ps-ui.fc.addresses", [])
 			};
 			$scope.input = "";
 			$scope.addAddress = function (e) {
-				if (e instanceof KeyboardEvent) {
+				if (e && e.type === "keyup") {
 					if (e.keyCode !== 13) return;
 					if (!$scope.place) return;
 					if (!$scope.place.country) return;
