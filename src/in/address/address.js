@@ -1,6 +1,6 @@
 angular.module("ps-ui.in.address", [])
 
-.factory("PsPlaceFormattingService", [function () {
+.factory("PsPlaceFormattingService", function () {
 	var contains = function (array, element) {
 		return array.indexOf(element) !== -1;
 	};
@@ -26,9 +26,9 @@ angular.module("ps-ui.in.address", [])
 	return {
 		format: format
 	};
-}])
+})
 
-.directive("psInAddress", ["PsPlaceFormattingService", function (PsPlaceFormattingService) {
+.directive("psInAddress", function (PsPlaceFormattingService) {
 	return {
 		restrict: "E",
 		replace: true,
@@ -56,4 +56,4 @@ angular.module("ps-ui.in.address", [])
 			}
 		}
 	};
-}]);
+});

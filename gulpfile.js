@@ -1,12 +1,8 @@
-var gulp		= require("gulp");
-var concat		= require("gulp-concat");
-var ngHtml2Js	= require("gulp-ng-html2js");
-var uglify		= require("gulp-uglify");
-var minifyCss	= require("gulp-minify-css");
-var livereload	= require("gulp-livereload");
-var tinyLr		= require("tiny-lr");
-var static		= require("node-static");
-var http		= require("http");
+var gulp	= require("gulp");
+var tinyLr	= require("tiny-lr");
+var static	= require("node-static");
+var http	= require("http");
+var plugins	= require("gulp-load-plugins")();
 
 var lrServer = tinyLr();
 var dvServer = http.createServer(function (req, res) {
@@ -18,35 +14,41 @@ var dvServer = http.createServer(function (req, res) {
 });
 
 gulp.task("styles", function () {
-	gulp.src("styles/ps-ui.css")
-		.pipe(concat("ps-ui.min.css"))
-		.pipe(minifyCss())
+	gulp.src("styles/ps-ui.scss")
+		.pipe(plugins.sass())
+		.pipe(plugins.autoprefixer("last 2 version"))
+		.pipe(plugins.rename("ps-ui.css"))
+		.pipe(gulp.dest("dist/"))
+		.pipe(plugins.minifyCss())
+		.pipe(plugins.rename("ps-ui.min.css"))
 		.pipe(gulp.dest("dist/"));
 });
 
 gulp.task("scripts", function () {
 	gulp.src("src/**/*.js")
-		.pipe(concat("ps-ui.min.js"))
-		.pipe(uglify())
+		.pipe(plugins.ngmin)
+		.pipe(plugins.concat("ps-ui.js"))
 		.pipe(gulp.dest("dist/"));
 });
 
 gulp.task("templates", function () {
 	gulp.src("template/**/*.html")
-		.pipe(ngHtml2Js({
+		.pipe(plugins.ngHtml2Js({
 			moduleName: "ps-ui.ps-template-cache",
 			prefix: "template/"
 		}))
-		.pipe(concat("ps-template-cache.min.js"))
-		.pipe(uglify())
+		.pipe(plugins.concat("ps-template-cache.js"))
 		.pipe(gulp.dest("dist/"));
 });
 
 gulp.task("final", function () {
-	gulp.src(["dist/ps-template-cache.min.js", "dist/ps-ui.min.js"])
-		.pipe(concat("ps-ui-tpls.min.js"))
+	gulp.src(["dist/ps-template-cache.js", "dist/ps-ui.js"])
+		.pipe(plugins.concat("ps-ui-tpls.js"))
 		.pipe(gulp.dest("dist/"))
-		.pipe(livereload(lrServer));
+		.pipe(plugins.uglify())
+		.pipe(plugins.rename("ps-ui-tpls.min.js"))
+		.pipe(gulp.dest("dist/"))
+		.pipe(plugins.livereload(lrServer));
 });
 
 gulp.task("default", function () {

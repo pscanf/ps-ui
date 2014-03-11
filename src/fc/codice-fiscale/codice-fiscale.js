@@ -79,7 +79,7 @@ angular.module("ps-ui.fc.codice-fiscale", ["ui.utils"])
 	};
 }])
 
-.directive("psFcCodiceFiscale", ["PsCfValidationService", function (PsCfValidationService) {
+.directive("psFcCodiceFiscale", function (PsCfValidationService) {
 	return {
 		restrict: "E",
 		templateUrl: "template/fc/codice-fiscale/codice-fiscale.html",
@@ -106,4 +106,4 @@ angular.module("ps-ui.fc.codice-fiscale", ["ui.utils"])
 			});
 		}
 	};
-}]);
+});
