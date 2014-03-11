@@ -24,7 +24,7 @@ angular.module("ps-ui.fc.codice-fiscale", ["ui.utils"])
 	return constants;
 })
 
-.factory("PsCfValidationService", ["PsCfConstants", function (PsCfConstants) {
+.factory("PsCfValidationService", function (PsCfConstants) {
 	var check = {};
 	check.length = function (cf) {
 		if (cf.length !== 16) {
@@ -77,7 +77,7 @@ angular.module("ps-ui.fc.codice-fiscale", ["ui.utils"])
 	return {
 		validate: validate
 	};
-}])
+})
 
 .directive("psFcCodiceFiscale", function (PsCfValidationService) {
 	return {

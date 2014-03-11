@@ -4,6 +4,7 @@ var static	= require("node-static");
 var http	= require("http");
 var plugins	= require("gulp-load-plugins")();
 
+console.log(plugins);
 var lrServer = tinyLr();
 var dvServer = http.createServer(function (req, res) {
 	var stServer = new static.Server(".", {cache: false});
@@ -26,14 +27,14 @@ gulp.task("styles", function () {
 
 gulp.task("scripts", function () {
 	gulp.src("src/**/*.js")
-		.pipe(plugins.ngmin)
+		.pipe(plugins.ngmin())
 		.pipe(plugins.concat("ps-ui.js"))
 		.pipe(gulp.dest("dist/"));
 });
 
 gulp.task("templates", function () {
 	gulp.src("template/**/*.html")
-		.pipe(plugins.ngHtml2Js({
+		.pipe(plugins.ngHtml2js({
 			moduleName: "ps-ui.ps-template-cache",
 			prefix: "template/"
 		}))
@@ -54,9 +55,8 @@ gulp.task("final", function () {
 gulp.task("default", function () {
 	dvServer.listen(8080);
 	lrServer.listen(35729);
-	gulp.watch("styles/ps-ui.css", ["styles"]);
+	gulp.watch("styles/ps-ui.scss", ["styles"]);
 	gulp.watch("src/**/*.js", ["scripts"]);
 	gulp.watch("template/**/*.html", ["templates"]);
-	gulp.watch("dist/ps-ui.min.js", ["final"]);
-	gulp.watch("dist/ps-template-cache.min.js", ["final"]);
+	gulp.watch(["dist/ps-template-cache.js", "dist/ps-ui.js"], ["final"]);
 });
