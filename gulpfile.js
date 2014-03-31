@@ -21,7 +21,8 @@ gulp.task("styles", function () {
 		.pipe(gulp.dest("dist/"))
 		.pipe(plugins.minifyCss())
 		.pipe(plugins.rename("ps-ui.min.css"))
-		.pipe(gulp.dest("dist/"));
+		.pipe(gulp.dest("dist/"))
+		.pipe(plugins.livereload(lrServer));
 });
 
 gulp.task("scripts", function () {
